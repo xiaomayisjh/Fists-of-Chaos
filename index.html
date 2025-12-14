@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>拳乱天下</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="拳乱天下 - 长篇历史小说">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <style>
+    :root {
+      --primary-color: #ff0000;
+      --text-color: #000000;
+      --sidebar-bg: #000000;
+      --cover-bg: #000000;
+    }
+    
+    /* 全局样式 */
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body {
+      font-size: 15px;
+      line-height: 1.7;
+      background: #ffffff;
+    }
+    
+    /* 内容区域 */
+    .markdown-section {
+      max-width: 850px;
+      padding: 25px 35px;
+    }
+    
+    .markdown-section h1 {
+      font-size: 2.2em;
+      color: #ff0000;
+      border-bottom: 5px solid #ff0000;
+      padding-bottom: 12px;
+      margin: 25px 0 20px 0;
+      font-weight: 900;
+      background: linear-gradient(90deg, rgba(255, 0, 0, 0.05) 0%, transparent 100%);
+      padding-left: 15px;
+    }
+    
+    .markdown-section h2 {
+      font-size: 1.6em;
+      color: #000000;
+      border-left: 8px solid #ff0000;
+      padding-left: 18px;
+      margin: 35px 0 18px 0;
+      font-weight: 900;
+      background: #fff5f5;
+      padding: 12px 18px;
+      box-shadow: 0 2px 5px rgba(255, 0, 0, 0.1);
+    }
+    
+    .markdown-section h3 {
+      font-size: 1.3em;
+      color: #000000;
+      font-weight: 800;
+      margin: 25px 0 15px 0;
+      border-bottom: 3px solid #ffcccc;
+      padding-bottom: 8px;
+    }
+    
+    .markdown-section p {
+      font-size: 1em;
+      color: #000000;
+      line-height: 1.9;
+      margin: 12px 0;
+    }
+    
+    .markdown-section blockquote {
+      background: #fffbea;
+      border-left: 8px solid #ffaa00;
+      padding: 18px 22px;
+      margin: 20px 0;
+      font-size: 1.05em;
+      color: #000000;
+      font-style: italic;
+      box-shadow: 0 3px 10px rgba(255, 170, 0, 0.2);
+      font-weight: 600;
+    }
+    
+    .markdown-section blockquote p {
+      margin: 8px 0;
+    }
+    
+    .markdown-section strong {
+      color: #ff0000;
+      font-weight: 900;
+    }
+    
+    .markdown-section hr {
+      border: none;
+      border-top: 4px solid #ff0000;
+      margin: 35px 0;
+      opacity: 0.4;
+    }
+    
+    .markdown-section ul, .markdown-section ol {
+      padding-left: 25px;
+    }
+    
+    .markdown-section li {
+      margin: 8px 0;
+      line-height: 1.8;
+    }
+    
+    /* 侧边栏 - 极致对比 */
+    .sidebar {
+      background: #000000 !important;
+      border-right: 5px solid #ff0000 !important;
+    }
+    
+    .sidebar-nav {
+      padding: 15px !important;
+      background: #000000 !important;
+    }
+    
+    .sidebar-nav > ul > li {
+      margin: 5px 0 !important;
+    }
+    
+    .sidebar-nav li {
+      line-height: 1.6 !important;
+    }
+    
+    .sidebar-nav a,
+    .sidebar-nav ul li a,
+    .sidebar ul li a {
+      color: #ffffff !important;
+      font-size: 0.95em !important;
+      font-weight: 600 !important;
+      padding: 10px 12px !important;
+      display: block !important;
+      border-radius: 3px !important;
+      transition: all 0.15s !important;
+      border-left: 3px solid transparent !important;
+      text-decoration: none !important;
+    }
+    
+    .sidebar-nav a:hover,
+    .sidebar-nav ul li a:hover,
+    .sidebar ul li a:hover {
+      background: #ff0000 !important;
+      color: #ffffff !important;
+      transform: translateX(3px) !important;
+      font-weight: 800 !important;
+      border-left-color: #ffff00 !important;
+    }
+    
+    .sidebar-nav li.active > a,
+    .sidebar-nav ul li.active > a,
+    .sidebar ul li.active > a {
+      background: #ff0000 !important;
+      color: #ffffff !important;
+      font-weight: 800 !important;
+      border-left: 5px solid #ffff00 !important;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.5) !important;
+    }
+    
+    .sidebar-nav strong,
+    .sidebar-nav > ul > li > strong,
+    .sidebar > div > ul > li > strong {
+      color: #ffff00 !important;
+      font-size: 1.1em !important;
+      display: block !important;
+      margin: 18px 0 8px 0 !important;
+      padding: 10px 12px !important;
+      background: #1a1a1a !important;
+      border-left: 5px solid #ffff00 !important;
+      font-weight: 900 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1px !important;
+    }
+    
+    /* 侧边栏标题 */
+    .sidebar .app-name,
+    .sidebar .app-name-link,
+    .sidebar h1,
+    .sidebar > h1,
+    .app-name {
+      color: #ffffff !important;
+      font-weight: 900 !important;
+      margin: 0 !important;
+      padding: 15px !important;
+      font-size: 1.5em !important;
+    }
+    
+    .sidebar .app-name a,
+    .sidebar .app-name-link,
+    .sidebar h1 a,
+    .app-name a {
+      color: #ffffff !important;
+      text-decoration: none !important;
+      font-weight: 900 !important;
+    }
+    
+    .sidebar .app-name a:hover,
+    .app-name a:hover {
+      color: #ffff00 !important;
+    }
+    
+    /* 封面 - 极致对比 */
+    section.cover {
+      background: #000000;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    section.cover::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        repeating-linear-gradient(90deg, rgba(255, 0, 0, 0.05) 0px, transparent 2px, transparent 4px, rgba(255, 0, 0, 0.05) 6px),
+        repeating-linear-gradient(0deg, rgba(255, 0, 0, 0.05) 0px, transparent 2px, transparent 4px, rgba(255, 0, 0, 0.05) 6px);
+      opacity: 0.6;
+    }
+    
+    section.cover .cover-main {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+    }
+    
+    section.cover h1,
+    section.cover .cover-main h1,
+    .cover h1 {
+      font-size: 4em !important;
+      font-weight: 900 !important;
+      color: #ffffff !important;
+      text-shadow: 
+        0 0 30px rgba(255, 0, 0, 1),
+        0 0 60px rgba(255, 0, 0, 0.8),
+        5px 5px 10px rgba(0, 0, 0, 1) !important;
+      letter-spacing: 0.3em !important;
+      margin: 0.3em 0 !important;
+      font-family: 'STKaiti', 'KaiTi', '楷体', serif !important;
+    }
+    
+    section.cover blockquote,
+    section.cover .cover-main blockquote,
+    .cover blockquote {
+      font-size: 1.3em !important;
+      color: #ffffff !important;
+      border-left: 8px solid #ff0000 !important;
+      background: rgba(255, 0, 0, 0.2) !important;
+      padding: 18px 25px !important;
+      margin: 1.5em auto !important;
+      max-width: 650px !important;
+      font-style: italic !important;
+      text-shadow: 3px 3px 8px rgba(0, 0, 0, 1) !important;
+      font-weight: 700 !important;
+      box-shadow: 0 5px 25px rgba(255, 0, 0, 0.4) !important;
+    }
+    
+    section.cover blockquote p,
+    .cover blockquote p {
+      color: #ffffff !important;
+    }
+    
+    section.cover ul {
+      list-style: none;
+      padding: 0;
+      margin: 1.5em auto;
+      max-width: 650px;
+    }
+    
+    section.cover li,
+    section.cover .cover-main li,
+    .cover li {
+      color: #ffffff !important;
+      font-size: 1.1em !important;
+      margin: 12px 0 !important;
+      padding-left: 35px !important;
+      position: relative !important;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 1) !important;
+      font-weight: 700 !important;
+      line-height: 1.6 !important;
+    }
+    
+    section.cover li::before {
+      content: '●';
+      position: absolute;
+      left: 0;
+      color: #ffff00;
+      font-size: 1.5em;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(255, 255, 0, 0.8);
+    }
+    
+    /* 封面作者信息 */
+    section.cover p,
+    section.cover .cover-main p,
+    .cover p {
+      color: #ffffff !important;
+      font-size: 1.2em !important;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 1) !important;
+      font-weight: 600 !important;
+    }
+    
+    section.cover strong,
+    section.cover .cover-main strong,
+    .cover strong {
+      color: #ffff00 !important;
+      font-weight: 900 !important;
+      font-size: 1.3em !important;
+      text-shadow: 
+        0 0 15px rgba(255, 255, 0, 0.8),
+        2px 2px 6px rgba(0, 0, 0, 1) !important;
+      display: block !important;
+      margin: 1.5em 0 !important;
+    }
+    
+    section.cover .cover-main > p:last-child {
+      margin-top: 2em;
+    }
+    
+    section.cover .cover-main > p:last-child a {
+      background: #ff0000;
+      color: #ffffff;
+      border: 4px solid #ffff00;
+      padding: 15px 40px;
+      font-size: 1.2em;
+      border-radius: 6px;
+      transition: all 0.25s ease;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 8px 30px rgba(255, 0, 0, 0.7);
+      font-weight: 900;
+      margin: 8px;
+      display: inline-block;
+      text-decoration: none;
+    }
+    
+    section.cover .cover-main > p:last-child a:hover {
+      background: #ffff00;
+      color: #000000;
+      border-color: #ffffff;
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 40px rgba(255, 255, 0, 0.9);
+    }
+    
+    /* 装饰边框 */
+    section.cover::after {
+      content: '';
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      right: 25px;
+      bottom: 25px;
+      border: 5px solid rgba(255, 255, 0, 0.7);
+      pointer-events: none;
+      z-index: 0;
+      box-shadow: 
+        inset 0 0 40px rgba(255, 0, 0, 0.4),
+        0 0 40px rgba(255, 0, 0, 0.4);
+    }
+    
+    /* 搜索框 */
+    .search,
+    .sidebar .search,
+    input[type="search"] {
+      margin: 15px !important;
+    }
+    
+    .search input,
+    .sidebar .search input,
+    input[type="search"] {
+      background: #ffffff !important;
+      border: 3px solid #ff0000 !important;
+      color: #000000 !important;
+      font-size: 1em !important;
+      padding: 10px 12px !important;
+      font-weight: 700 !important;
+      width: calc(100% - 30px) !important;
+      box-sizing: border-box !important;
+    }
+    
+    .search input:focus,
+    .sidebar .search input:focus,
+    input[type="search"]:focus {
+      border-color: #ffff00 !important;
+      box-shadow: 0 0 15px rgba(255, 255, 0, 0.6) !important;
+      outline: none !important;
+    }
+    
+    .search input::placeholder,
+    input[type="search"]::placeholder {
+      color: #666666 !important;
+      font-weight: 600 !important;
+    }
+    
+    /* 搜索结果 */
+    .matching-post {
+      border-bottom: 1px solid #333333 !important;
+    }
+    
+    .matching-post a {
+      color: #ffffff !important;
+    }
+    
+    .matching-post a:hover {
+      color: #ffff00 !important;
+    }
+    
+    .search .results-panel {
+      background: #1a1a1a !important;
+      border: 3px solid #ff0000 !important;
+    }
+    
+    .search .results-panel.show {
+      display: block !important;
+    }
+    
+    /* 移动端适配 */
+    @media screen and (max-width: 768px) {
+      body {
+        font-size: 14px;
+      }
+      
+      .markdown-section {
+        padding: 20px 15px;
+      }
+      
+      .markdown-section h1 {
+        font-size: 1.8em;
+      }
+      
+      .markdown-section h2 {
+        font-size: 1.4em;
+      }
+      
+      .markdown-section h3 {
+        font-size: 1.2em;
+      }
+      
+      section.cover h1 {
+        font-size: 2.5em;
+        letter-spacing: 0.2em;
+      }
+      
+      section.cover blockquote {
+        font-size: 1.1em;
+        padding: 15px 20px;
+      }
+      
+      section.cover li {
+        font-size: 1em;
+      }
+      
+      section.cover .cover-main > p:last-child a {
+        font-size: 1.1em;
+        padding: 12px 30px;
+      }
+      
+      .sidebar-nav a {
+        font-size: 0.9em;
+        padding: 8px 10px;
+      }
+      
+      .sidebar-nav strong {
+        font-size: 1em;
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      section.cover h1 {
+        font-size: 2em;
+      }
+      
+      section.cover::after {
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border-width: 3px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: '拳乱天下',
+      repo: 'https://github.com/xiaomayisjh',
+      loadSidebar: true,
+      loadNavbar: false,
+      coverpage: true,
+      auto2top: true,
+      search: 'auto',
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: '搜索...',
+        noData: '找不到结果',
+        depth: 2
+      },
+      formatUpdated: '{MM}/{DD} {HH}:{mm}',
+      plugins: [
+        function(hook, vm) {
+          hook.beforeEach(function(html) {
+            return html;
+          });
+        }
+      ]
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- 搜索插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+</body>
+</html>
